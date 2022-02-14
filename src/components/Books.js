@@ -1,20 +1,32 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 const Books = () => {
-  const [books, setBooks] = useState([]);
+  const [data, setData] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchBooks = async () => {
-      const res = await axios.get(
-        `http://openlibrary.org/search.json?title=bloom` //need to say title=${book.title}
-      );
-      console.log(res.data);
-    };
-    fetchBooks();
+    setLoading(true);
+    fetch("http://openlibrary.org/search.json?title=bloom")
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .then(() => setLoading())
+      .catch(setError); //.catch deals with rejected cases
+    console.log(data);
   }, []);
 
-  return <div>Books</div>;
-};
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
 
+  if (error) {
+    return <pre>{JSON.stringify(error, null, 2)}</pre>;
+  }
+
+  if (data) {
+    return <div>{data.docs[0].title}</div>;
+  }
+
+  return <h1>Hello</h1>;
+};
 export default Books;
