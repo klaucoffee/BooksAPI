@@ -7,7 +7,7 @@ const Books = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://openlibrary.org/search.json?title=bloom")
+    fetch("https://openlibrary.org/search.json?title=bloom")
       .then((response) => response.json())
       .then((data) => setData(data))
       .then(() => setLoading())
