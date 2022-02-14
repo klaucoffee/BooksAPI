@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/booksapi/static/css/main.e2885ff2.css",
-    "main.js": "/booksapi/static/js/main.8d9dcc99.js",
+    "main.js": "/booksapi/static/js/main.f6cfa605.js",
     "index.html": "/booksapi/index.html",
     "main.e2885ff2.css.map": "/booksapi/static/css/main.e2885ff2.css.map",
-    "main.8d9dcc99.js.map": "/booksapi/static/js/main.8d9dcc99.js.map"
+    "main.f6cfa605.js.map": "/booksapi/static/js/main.f6cfa605.js.map"
   },
   "entrypoints": [
     "static/css/main.e2885ff2.css",
-    "static/js/main.8d9dcc99.js"
+    "static/js/main.f6cfa605.js"
   ]
 }
