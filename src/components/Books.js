@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Search from "./Search";
+import "./styles.css";
 
 const Books = () => {
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [search, setSearch] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -27,7 +30,6 @@ const Books = () => {
     return null;
   } else {
     let booksarr = data.docs;
-    console.log(booksarr);
     const booksTable = booksarr.map((el, index) => {
       return (
         <tr className="table-item" key={index}>
@@ -37,9 +39,25 @@ const Books = () => {
       );
     });
 
+    const searchHandler = (search) => {
+      setSearch(search);
+      if (search !== "") {
+        const bookList = booksarr.filter((book) => {
+          return Object.values(book)
+            .join(" ")
+            .toLowerCase()
+            .includes(search.toLowerCase());
+        });
+        setSearchResults(bookList);
+      } else {
+        setSearchResults(booksarr);
+      }
+    };
+    console.log(search);
+    console.log(searchResults);
     return (
       <div className="container">
-        <Search />
+        <Search term={search} searchKeyword={searchHandler} />
         <table className="table-header">
           <thead>
             <tr>
