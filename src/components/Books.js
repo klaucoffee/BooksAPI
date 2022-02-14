@@ -9,9 +9,13 @@ const Books = () => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
+  console.log(search);
+
+  //FIX: restrict data obtained from API. think of how to narrow down selection
+  let url = "https://openlibrary.org/search.json?author=bloom";
   useEffect(() => {
     setLoading(true);
-    fetch("https://openlibrary.org/search.json?title=bloom")
+    fetch(url)
       .then((response) => response.json())
       .then((data) => setData(data))
       .then(() => setLoading())
@@ -43,6 +47,7 @@ const Books = () => {
       setSearch(search);
       if (search !== "") {
         const bookList = booksarr.filter((book) => {
+          //FIX: find out how to filter for author anbd title
           return Object.values(book)
             .join(" ")
             .toLowerCase()
@@ -53,20 +58,43 @@ const Books = () => {
         setSearchResults(booksarr);
       }
     };
+
+    const booksResults = searchResults.map((el, index) => {
+      return (
+        <tr className="table-item" key={index}>
+          <td> {el.title} </td>
+          <td> {el.author_name} </td>
+        </tr>
+      );
+    });
     console.log(search);
-    console.log(searchResults);
+    console.log(booksResults);
+
     return (
       <div className="container">
         <Search term={search} searchKeyword={searchHandler} />
-        <table className="table-header">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Author</th>
-            </tr>
-          </thead>
-          <tbody>{booksTable}</tbody>
-        </table>
+
+        {search.length < 1 ? (
+          <table className="table-header">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+              </tr>
+            </thead>
+            <tbody>{booksTable}</tbody>
+          </table>
+        ) : (
+          <table className="table-header">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+              </tr>
+            </thead>
+            <tbody>{booksResults}</tbody>
+          </table>
+        )}
       </div>
     );
   }
