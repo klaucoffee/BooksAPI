@@ -12,7 +12,6 @@ const Books = () => {
       .then((data) => setData(data))
       .then(() => setLoading())
       .catch(setError); //.catch deals with rejected cases
-    console.log(data);
   }, []);
 
   if (loading) {
@@ -27,15 +26,28 @@ const Books = () => {
     return null;
   } else {
     let booksarr = data.docs;
+    console.log(booksarr);
+    const booksTable = booksarr.map((el, index) => {
+      return (
+        <tr key={index}>
+          <td> {el.title} </td>
+          <td> {el.author_name} </td>
+        </tr>
+      );
+    });
+
     return (
       <div className="container">
-        <ul>
-          {booksarr.map((el, index) => {
-            return <li key={index}>title = {el.title}</li>;
-          })}
-        </ul>
+        <table>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+          </tr>
+          {booksTable}
+        </table>
       </div>
     );
   }
 };
+
 export default Books;
