@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Search = () => {
-  const [search, setSearch] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-
-  const handleSearch = (e) => {};
+const Search = ({ term, searchKeyword }) => {
+  const handleSearch = (e) => {
+    searchKeyword(e.target.value);
+  };
   return (
     <div className="search-bar">
       <input
         className="search-input"
         type="text"
+        value={term}
         placeholder="Enter a book name"
         onChange={handleSearch}
       ></input>
