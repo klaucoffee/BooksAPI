@@ -3,3 +3,40 @@
   margin: auto;
   justify-content: center;
 }
+
+.table-header {
+  list-style: none;
+  font-size: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.table-item {
+  background: #333;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  width: 45%;
+  text-align: center;
+}
+
+.searchbar {
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #333;
+  font-size: 20px;
+  margin: auto;
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+
+  .table-header,
+  .table-item {
+    width: 100%;
+  }
+}

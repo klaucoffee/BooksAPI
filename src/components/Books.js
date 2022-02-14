@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Search from "./Search";
 
 const Books = () => {
   const [data, setData] = useState("");
@@ -29,7 +30,7 @@ const Books = () => {
     console.log(booksarr);
     const booksTable = booksarr.map((el, index) => {
       return (
-        <tr key={index}>
+        <tr className="table-item" key={index}>
           <td> {el.title} </td>
           <td> {el.author_name} </td>
         </tr>
@@ -38,12 +39,15 @@ const Books = () => {
 
     return (
       <div className="container">
-        <table>
-          <tr>
-            <th>Title</th>
-            <th>Author</th>
-          </tr>
-          {booksTable}
+        <Search />
+        <table className="table-header">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+            </tr>
+          </thead>
+          <tbody>{booksTable}</tbody>
         </table>
       </div>
     );
