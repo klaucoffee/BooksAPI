@@ -16,17 +16,26 @@ const Books = () => {
   }, []);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <h1 style={{ textAlign: "center" }}>Loading...</h1>;
   }
 
   if (error) {
     return <pre>{JSON.stringify(error, null, 2)}</pre>;
   }
 
-  if (data) {
-    return <div>{data.docs[0].title}</div>;
+  if (!data) {
+    return null;
+  } else {
+    let booksarr = data.docs;
+    return (
+      <div className="container">
+        <ul>
+          {booksarr.map((el, index) => {
+            return <li key={index}>title = {el.title}</li>;
+          })}
+        </ul>
+      </div>
+    );
   }
-
-  return <h1>Hello</h1>;
 };
 export default Books;

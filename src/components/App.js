@@ -1,4 +1,5 @@
 import Books from "./Books.js";
+import "./styles.css";
 
 const App = () => {
   return (
