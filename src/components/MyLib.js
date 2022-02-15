@@ -3,8 +3,10 @@ import React from "react";
 const MyLib = (props) => {
   return (
     <div>
-      <div>hello</div>
-      <div>{props.title}</div>
+      <h2>title: {props.title} </h2>
+      <h2>author: {props.author_name}</h2>
+      <h2>publish: {props.publish_year}</h2>
+      <h2>edition: {props.edition_count}</h2>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Search = (props) => {
   const [bookTitle, setBookTitle] = useState("");
+  const [search, setSearch] = useState(false);
 
   const handleSubmit = (e) => {
     // console.log("handleSubmit - bookTitle", bookTitle);
@@ -9,6 +10,7 @@ const Search = (props) => {
     // props.handleSubmit(bookTitle);
     // setBookTitle("");
     e.preventDefault();
+    props.handleSubmit(setSearch(true));
     props.handleSubmit(bookTitle);
     console.log("onclick", bookTitle);
     setBookTitle("");
