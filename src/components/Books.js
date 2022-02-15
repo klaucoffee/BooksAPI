@@ -36,64 +36,67 @@ const Books = () => {
     makeApiCall();
   }, [bookTitle]);
 
-  // if (loading) {
-  //   return <h1 style={{ textAlign: "center" }}>Loading...</h1>;
-  // }
+  if (loading) {
+    return <h1 style={{ textAlign: "center" }}>Loading...</h1>;
+  }
 
-  // if (error) {
-  //   return <pre>{JSON.stringify(error, null, 2)}</pre>;
-  // }
+  if (error) {
+    return <pre>{JSON.stringify(error, null, 2)}</pre>;
+  }
 
-  // if (!data) {
-  //   return null;
-  // } else {
-  //   //if there is data to fetch, it is rendered here
-  //   let booksarr = data.docs;
-  //   const booksTable = booksarr.map((el, index) => {
-  //     return (
-  //       <tr className="table-item" key={index}>
-  //         <td> {el.title} </td>
-  //         <td> {el.author_name} </td>
-  //       </tr>
-  //     );
-  //   });
+  if (!bookData) {
+    return null;
+  } else {
+    //if there is data to fetch, it is rendered here
+    console.log("confirm running mapping");
+    let booksarr = bookData.docs;
+    const booksTable = booksarr.map((el, index) => {
+      return (
+        <tr className="table-item" key={index}>
+          <td> {el.title} </td>
+          <td> {el.author_name} </td>
+        </tr>
+      );
+    });
 
-  const handleSubmit = (title) => {
-    setBookTitle(title);
-    //setSearch(search);
-    // if (search !== "") {
-    //   //booksList is a filter to search for the books
-    //   const bookList = booksarr.filter((book) => {
-    //     //FIX: find out how to filter for author anbd title
-    //     return Object.values(book)
-    //       .join(" ")
-    //       .toLowerCase()
-    //       .includes(search.toLowerCase());
+    const handleSubmit = (title) => {
+      setBookTitle(title);
+      console.log("passed props from search:", title);
+      //setSearch(search);
+      // if (search !== "") {
+      //   //booksList is a filter to search for the books
+      //   const bookList = booksarr.filter((book) => {
+      //     //FIX: find out how to filter for author anbd title
+      //     return Object.values(book)
+      //       .join(" ")
+      //       .toLowerCase()
+      //       .includes(search.toLowerCase());
+      //   });
+      //   setSearchResults(bookList);
+      // } else {
+      //   setSearchResults(booksarr);
+      // }
+    };
+
+    //   const booksResults = searchResults.map((el, index) => {
+    //     return (
+    //       <tr className="table-item" key={index}>
+    //         <td> {el.title} </td>
+    //         <td> {el.author_name} </td>
+    //       </tr>
+    //     );
     //   });
-    //   setSearchResults(bookList);
-    // } else {
-    //   setSearchResults(booksarr);
-    // }
-  };
+    //   console.log(search);
+    //   console.log(booksResults);
 
-  //   const booksResults = searchResults.map((el, index) => {
-  //     return (
-  //       <tr className="table-item" key={index}>
-  //         <td> {el.title} </td>
-  //         <td> {el.author_name} </td>
-  //       </tr>
-  //     );
-  //   });
-  //   console.log(search);
-  //   console.log(booksResults);
+    return (
+      <div className="container">
+        <Search handleSubmit={handleSubmit} />
 
-  return (
-    <div className="container">
-      <Search handleSubmit={handleSubmit} />
-
-      {search.length < 1 ? <MyLib bookdata={bookData} /> : null}
-    </div>
-  );
+        <MyLib bookdata={bookData} />
+      </div>
+    );
+  }
 };
 
 export default Books;

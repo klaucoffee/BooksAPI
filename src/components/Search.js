@@ -4,16 +4,21 @@ const Search = (props) => {
   const [bookTitle, setBookTitle] = useState("");
 
   const handleSubmit = (e) => {
-    console.log("handleSubmit - bookTitle", bookTitle);
+    // console.log("handleSubmit - bookTitle", bookTitle);
+    // e.preventDefault();
+    // props.handleSubmit(bookTitle);
+    // setBookTitle("");
     e.preventDefault();
     props.handleSubmit(bookTitle);
+    console.log("onclick", bookTitle);
     setBookTitle("");
   };
 
   const handleSearch = (e) => {
     setBookTitle(e.target.value);
-    console.log(bookTitle);
+    console.log("handlesearch", bookTitle);
   };
+
   return (
     <div className="search-bar">
       <input
@@ -23,7 +28,7 @@ const Search = (props) => {
         placeholder="Enter the book title or the author"
         onChange={handleSearch}
       ></input>
-      <input type="submit" value="find book info" onClick={handleSubmit} />
+      <input type="submit" value="Find Book Info" onClick={handleSubmit} />
     </div>
   );
 };

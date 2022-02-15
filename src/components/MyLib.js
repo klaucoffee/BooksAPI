@@ -1,7 +1,12 @@
 import React from "react";
 
 const MyLib = (props) => {
-  return <div>{props.title}</div>;
+  return (
+    <div>
+      <div>hello</div>
+      <div>{props.title}</div>
+    </div>
+  );
 };
 
 export default MyLib;
