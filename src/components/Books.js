@@ -22,22 +22,6 @@ const Books = () => {
           setBookTitle(data.title);
           console.log("bookdata in useeffect if clause", bookData);
         })
-        .then(() => {
-          if (bookData.docs[0].title !== "undefined") {
-            console.log("inside if search", bookData.docs);
-            bookData.docs.map((el, i) => {
-              return (
-                <MyLib>
-                  key={i}
-                  title={el.title}
-                  author={el.author_name}
-                  publish={el.publish_year}
-                  edition={el.edition_count}
-                </MyLib>
-              );
-            });
-          }
-        })
         .then(() => setLoading())
         .catch(setError);
     };
@@ -52,43 +36,31 @@ const Books = () => {
     return <pre>{JSON.stringify(error, null, 2)}</pre>;
   }
 
-  // const myLibrary = bookData.docs.map((el, index) => {
-  //   console.log("in my lib", bookData);
-  //   return (
-  //     <li>
-  //       key={index}
-  //       title={el.title}
-  //       author={el.author_name}
-  //       publish={el.publish_year}
-  //       edition={el.edition_count}
-  //     </li>
-  //   );
-  // });
-
-  // if (bookData.q !== "undefined") {
-  //   //if there is data to fetch, it is rendered here
+  console.log(search);
+  if (search) {
+    console.log("line 41", bookData.docs); //this can't work because keep resetting state with new query
+    if (bookData.docs[0].title !== "undefined") {
+      console.log("inside if search", bookData.docs);
+      bookData.docs.map((el, i) => {
+        return (
+          <MyLib>
+            key={i}
+            title={el.title}
+            author={el.author_name}
+            publish={el.publish_year}
+            edition={el.edition_count}
+          </MyLib>
+        );
+      });
+    }
+  }
 
   const handleSubmit = (title) => {
     setBookTitle(title);
     console.log("passed props from search:", title);
-    setSearch(title);
+    setSearch(true);
   };
 
-  //const arr = bookData.docs;
-  // if (arr[0].title !== "undefined") {
-  //   console.log("inside if search", arr);
-  //   arr.map((el, i) => {
-  //     return (
-  //       <li>
-  //         key={i}
-  //         title={el.title}
-  //         author={el.author_name}
-  //         publish={el.publish_year}
-  //         edition={el.edition_count}
-  //       </li>
-  //     );
-  //   });
-  // }
   return (
     <div className="container">
       <Search search={search} handleSubmit={handleSubmit} />
