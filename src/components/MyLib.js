@@ -1,6 +1,7 @@
 import React from "react";
 
 const MyLib = (props) => {
+  console.log("from mylib", props.title);
   return (
     <div>
       <h2>title: {props.title} </h2>

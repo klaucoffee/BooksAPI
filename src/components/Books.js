@@ -7,7 +7,7 @@ const Books = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [search, setSearch] = useState(false);
-  const [bookData, setBookData] = useState("");
+  const [bookData, setBookData] = useState([]);
   const [bookTitle, setBookTitle] = useState("");
 
   useEffect(() => {
@@ -18,10 +18,24 @@ const Books = () => {
       fetch(bookurl)
         .then((response) => response.json())
         .then((data) => {
-          if (data.docs[0].title !== "undefined") {
-            setBookData(data);
-            setBookTitle(data.title);
-            console.log("bookdata in useeffect if clause", bookData);
+          setBookData(data);
+          setBookTitle(data.title);
+          console.log("bookdata in useeffect if clause", bookData);
+        })
+        .then(() => {
+          if (bookData.docs[0].title !== "undefined") {
+            console.log("inside if search", bookData.docs);
+            bookData.docs.map((el, i) => {
+              return (
+                <MyLib>
+                  key={i}
+                  title={el.title}
+                  author={el.author_name}
+                  publish={el.publish_year}
+                  edition={el.edition_count}
+                </MyLib>
+              );
+            });
           }
         })
         .then(() => setLoading())
@@ -41,15 +55,13 @@ const Books = () => {
   // const myLibrary = bookData.docs.map((el, index) => {
   //   console.log("in my lib", bookData);
   //   return (
-  //     <div>
-  //       <li>
-  //         key={index}
-  //         title={el.title}
-  //         author={el.author_name}
-  //         publish={el.publish.year}
-  //         edition={el.edition_count}
-  //       </li>
-  //     </div>
+  //     <li>
+  //       key={index}
+  //       title={el.title}
+  //       author={el.author_name}
+  //       publish={el.publish_year}
+  //       edition={el.edition_count}
+  //     </li>
   //   );
   // });
 
