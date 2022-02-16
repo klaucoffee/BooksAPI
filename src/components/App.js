@@ -16,7 +16,7 @@ const App = () => {
     fetch(demo_url)
       .then((response) => response.json())
       .then((jsonResponse) => {
-        setBooks(jsonResponse.docs);
+        //setBooks(jsonResponse.docs); so it doesnt display undefined anymore
         setLoading(false);
       });
   }, []);
@@ -60,9 +60,11 @@ const App = () => {
   //multiple ternery operators
   return (
     <div className="App">
-      <Header text="HOOKED" onClick={refreshPage} />
+      <Header text="Curate Your Library" onClick={refreshPage} />
       <Search search={search} />
-      <p className="App-intro">Sharing a few of our favourite books</p>
+      <p className="App-intro">
+        The World Belongs to those who Read - Rick Holland
+      </p>
       <div className="books">
         {loading && !errorMessage ? (
           <span>loading...</span>
