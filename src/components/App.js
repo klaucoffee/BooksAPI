@@ -4,6 +4,7 @@ import Header from "./Header";
 import BookDisplay from "./BookDisplay";
 import Search from "./Search";
 
+//const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b"; // you should replace this with yours
 const demo_url = `https://openlibrary.org/search.json?q="one+day+in+the+life"`;
 
 const App = () => {
@@ -23,7 +24,9 @@ const App = () => {
   const search = (searchValue) => {
     setLoading(true);
     setErrorMessage(null);
+    //console.log("search", movies); //TESTING
     let book_url = "https://openlibrary.org/search.json?q=" + searchValue;
+    //`https://www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`
     fetch(book_url)
       .then((response) => response.json())
       .then((jsonResponse) => {
@@ -48,16 +51,16 @@ const App = () => {
   };
 
   //not sure why refreshpage is not working
-  // const refreshPage = () => {
-  //   window.location.reload();
-  //   console.log("running");
-  // };
+  const refreshPage = () => {
+    window.location.reload();
+    console.log("running");
+  };
 
   console.log(books);
   //multiple ternery operators
   return (
     <div className="App">
-      <Header text="HOOKED" />
+      <Header text="HOOKED" onClick={refreshPage} />
       <Search search={search} />
       <p className="App-intro">Sharing a few of our favourite books</p>
       <div className="books">

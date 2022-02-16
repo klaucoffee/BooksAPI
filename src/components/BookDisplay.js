@@ -6,6 +6,8 @@ const DEFAULT_PLACEHOLDER_IMAGE =
 
 //takes one prop at a time (book is the same as the prop in app.js)
 const BookDisplay = ({ book }) => {
+  // const poster =
+  //   movie.Poster === "N/A" ? DEFAULT_PLACEHOLDER_IMAGE : movie.Poster;
   let bookLCCN = book.lccn;
 
   const coverurl =
