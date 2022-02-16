@@ -1,5 +1,6 @@
 import BookDisplay from "./BookDisplay";
 import Search from "./Search";
+import Header from "./Header";
 
 const demo_url = `https://openlibrary.org/search.json?q="one+day+in+the+life"`;
 
@@ -46,10 +47,30 @@ const App = () => {
       });
   };
 
+  //not sure why refreshpage is not working
+  const refreshPage = () => {
+    window.location.reload();
+    console.log("running");
+  };
+
+  console.log(books);
+  //multiple ternery operators
   return (
     <div className="App">
+      <Header text="HOOKED" onClick={refreshPage} />
       <Search search={search} />
-      <BookDisplay />
+      <p className="App-intro">Sharing a few of our favourite books</p>
+      <div className="books">
+        {loading && !errorMessage ? (
+          <span>loading...</span>
+        ) : errorMessage ? (
+          <div className="errorMessage">{errorMessage}</div>
+        ) : (
+          books.map((el, index) => (
+            <BookDisplay key={`${index}-${el.title}`} book={el} />
+          ))
+        )}
+      </div>
     </div>
   );
 };
