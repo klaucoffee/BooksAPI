@@ -10,7 +10,7 @@ const Header = (props) => {
       <div className="nav">
         <div className="nav-item">
           <span className="nav-logo">
-            <Link to="/">Home</Link>
+            <Link to="/booksapi">Home</Link>
           </span>
         </div>
         <div className="nav-item">
