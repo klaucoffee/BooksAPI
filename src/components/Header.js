@@ -14,10 +14,10 @@ const Header = (props) => {
           </span>
         </div>
         <div className="nav-item">
-          <Link to="/my-library">My Library</Link>
+          <Link to="/booksapi/my-library">My Library</Link>
         </div>
         <div className="nav-item">
-          <Link to="/about">About</Link>
+          <Link to="/booksapi/about">About</Link>
         </div>
       </div>
     </div>
