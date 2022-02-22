@@ -14,7 +14,7 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route path="/booksapi" element={<App />}>
         <Route index element={<Home />} />
         <Route path="my-library" element={<MyLib />} />
         <Route path="about" element={<About />} />
