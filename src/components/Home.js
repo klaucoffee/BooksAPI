@@ -4,8 +4,7 @@ import Header from "./Header";
 import BookDisplay from "./BookDisplay";
 import Search from "./Search";
 
-//const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b"; // you should replace this with yours
-const demo_url = `https://openlibrary.org/search.json?q="one+day+in+the+life"`;
+const demo_url = `https://openlibrary.org/search.json?q="2021"`;
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -16,7 +15,7 @@ const Home = () => {
     fetch(demo_url)
       .then((response) => response.json())
       .then((jsonResponse) => {
-        //setBooks(jsonResponse.docs); so it doesnt display undefined anymore
+        //setBooks(jsonResponse.docs);
         setLoading(false);
       });
   }, []);

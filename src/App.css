@@ -24,6 +24,12 @@
   font-size: large;
 }
 
+br {
+  display: block;
+  margin: 10px 0;
+  line-height: 150%;
+}
+
 /* new css for book component */
 
 * {
