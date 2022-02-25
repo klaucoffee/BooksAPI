@@ -1,5 +1,6 @@
 import React from "react";
 import BookDisplay from "./BookDisplay";
+import { useOutletContext } from "react-router-dom";
 
 //store data in firebase based on what is clicked
 
@@ -32,9 +33,10 @@ import BookDisplay from "./BookDisplay";
 //const db = getFirestore();
 
 const MyLib = (props) => {
+  const [library, setLibrary] = useOutletContext();
   console.log(props);
-  console.log("mylibrary");
-  return <div>MyLib</div>;
+  // console.log("mylibrary");
+  return <div>{library}</div>;
 };
 
 export default MyLib;
