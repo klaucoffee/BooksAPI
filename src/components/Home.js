@@ -29,9 +29,7 @@ const Home = () => {
     fetch(book_url)
       .then((response) => response.json())
       .then((jsonResponse) => {
-        console.log("searchValue", searchValue);
-        console.log(book_url);
-        console.log(jsonResponse.numFound);
+        console.log(jsonResponse);
         if (jsonResponse.numFound > 500) {
           //too many responses
           setErrorMessage(
@@ -70,9 +68,10 @@ const Home = () => {
         ) : errorMessage ? (
           <div className="errorMessage">{errorMessage}</div>
         ) : (
-          books.map((el, index) => (
-            <BookDisplay key={`${index}-${el.title}`} book={el} />
-          ))
+          books.map((el, index) => {
+            console.log("el", el);
+            return <BookDisplay key={`${index}-${el.title}`} book={el} />;
+          })
         )}
       </div>
     </div>

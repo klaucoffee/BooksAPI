@@ -15,16 +15,16 @@ const BookDisplay = ({ book }) => {
     props.addToLib({ book });
     //console.log({ book });
   };
-
+  console.log("book", book);
   const bookISBN = JSON.stringify(book.isbn);
   // console.log(bookISBN);
   // console.log(typeof bookISBN);
 
-  const bookPublishYear = JSON.stringify(book.publish_year);
+  //const bookPublishYear = JSON.stringify(book.publish_year);
   // const sliced = [...bookPublishYear];
   // console.log(sliced);
-
-  console.log(bookPublishYear);
+  const testing = book.publish_year;
+  console.log("book publish year", book.publish_year);
   //const bookPublishOneYear = bookPublishYear.slice(1, 5);
   //console.log(bookPublishOneYear); //How to render this? Can console.log but can't 'return' this
   //console.log(typeof bookPublishOneYear);
@@ -53,7 +53,7 @@ const BookDisplay = ({ book }) => {
           )}
         </div>
 
-        <p>{book.publish_year}</p>
+        <p>{testing?.length > 1 ? testing[0] : testing}</p>
 
         <button type="button" onClick={saveBook}>
           Add to My Library!
