@@ -10,29 +10,21 @@ const BookDisplay = ({ book }) => {
   const coverLCCNurl =
     "https://covers.openlibrary.org/b/lccn/" + bookLCCN + "-M.jpg";
 
+  let bookISBN = book.isbn;
+  console.log(bookISBN?.length > 1 ? bookISBN[0] : bookISBN);
+
+  //how to save the result? (bookISBN[0])
+  // const coverLCCNurl =
+  //   "https://covers.openlibrary.org/b/lccn/" + bookLCCN + "-M.jpg";
+
   const saveBook = (props) => {
     //setLibrary($(event.target).parent());
     props.addToLib({ book });
     //console.log({ book });
   };
-  console.log("book", book);
-  const bookISBN = JSON.stringify(book.isbn);
-  // console.log(bookISBN);
-  // console.log(typeof bookISBN);
 
-  //const bookPublishYear = JSON.stringify(book.publish_year);
-  // const sliced = [...bookPublishYear];
-  // console.log(sliced);
-  const testing = book.publish_year;
+  const publishedYear = book.publish_year;
   console.log("book publish year", book.publish_year);
-  //const bookPublishOneYear = bookPublishYear.slice(1, 5);
-  //console.log(bookPublishOneYear); //How to render this? Can console.log but can't 'return' this
-  //console.log(typeof bookPublishOneYear);
-  // <p>
-  //         {typeof bookPublishYear !== "undefined"
-  //           ? {book.publish_year}
-  //           : "year not available"}
-  //       </p>
 
   //how to save whole div (bookCard) when clicked?
   //how to pass saved info to 'MyLib'
@@ -53,7 +45,7 @@ const BookDisplay = ({ book }) => {
           )}
         </div>
 
-        <p>{testing?.length > 1 ? testing[0] : testing}</p>
+        <p>{publishedYear?.length > 1 ? publishedYear[0] : publishedYear}</p>
 
         <button type="button" onClick={saveBook}>
           Add to My Library!
