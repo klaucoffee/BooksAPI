@@ -5,13 +5,18 @@ import MyLib from "./MyLib";
 
 //takes one prop at a time (book is the same as the prop in app.js)
 const BookDisplay = ({ book }) => {
+  const [isbn, setIsbn] = useState([]);
   let bookLCCN = book.lccn;
 
   const coverLCCNurl =
     "https://covers.openlibrary.org/b/lccn/" + bookLCCN + "-M.jpg";
 
   let bookISBN = book.isbn;
-  console.log(bookISBN?.length > 1 ? bookISBN[0] : bookISBN);
+  if (bookISBN) {
+    setIsbn(bookISBN[0]);
+  }
+
+  console.log(isbn);
 
   //how to save the result? (bookISBN[0])
   // const coverLCCNurl =
@@ -40,7 +45,7 @@ const BookDisplay = ({ book }) => {
             <img
               width="200"
               alt={`The Book titled: ${book.title}`}
-              src={coverLCCNurl}
+              src={isbn}
             />
           )}
         </div>
