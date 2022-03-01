@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Outlet, useOutletContext, Link } from "react-router-dom";
 import "../App.css";
 import $ from "jquery";
 import MyLib from "./MyLib";
 
 //takes one prop at a time (book is the same as the prop in app.js)
-const BookDisplay = ({ book, index }) => {
+const BookDisplay = ({ book }) => {
   //const [isbn, setIsbn] = useState([]);
+
+  const [library, setLibrary] = useOutletContext();
+
   let bookLCCN = book.lccn;
 
   const coverLCCNurl =
@@ -17,13 +21,13 @@ const BookDisplay = ({ book, index }) => {
   //   setIsbn(bookISBN[0]);
   // }
 
-  console.log(bookISBN);
+  //console.log(bookISBN);
 
-  // const saveBook = (props) => {
-  //   //setLibrary($(event.target).parent());
-  //   props.addToLib({ book });
-  //   //console.log({ book });
-  // };
+  const saveBook = () => {
+    //setLibrary($(event.target).parent());
+    setLibrary([...library, { book }]);
+    console.log(library);
+  };
 
   const publishedYear = book.publish_year;
 
@@ -44,7 +48,9 @@ const BookDisplay = ({ book, index }) => {
         </div>
         <p>{publishedYear?.length > 1 ? publishedYear[0] : publishedYear}</p>
 
-        <button type="button">Add to My Library!</button>
+        <button type="button" onClick={saveBook}>
+          Add to My Library!
+        </button>
       </div>
     </div>
   );

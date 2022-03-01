@@ -5,12 +5,12 @@ const Search = ({ search }) => {
 
   const handleSearchInputChanges = (e) => {
     //searchValue is set here
-    setSearchValue(e.target.value);
+    setSearchValue(e.target.value); //stores search term in searchValue state
   };
 
   const callSearchFunction = (e) => {
     e.preventDefault();
-    search(searchValue);
+    search(searchValue); //passing back as props
     setSearchValue(""); //adding this to automatically clear input field
   };
 
