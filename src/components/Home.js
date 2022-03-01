@@ -9,7 +9,7 @@ const demo_url = `https://openlibrary.org/search.json?q="2021"`;
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [books, setBooks] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null); //set Message
 
   useEffect(() => {
     fetch(demo_url)
@@ -29,7 +29,6 @@ const Home = () => {
     fetch(book_url)
       .then((response) => response.json())
       .then((jsonResponse) => {
-        console.log(jsonResponse);
         if (jsonResponse.numFound > 500) {
           //too many responses
           setErrorMessage(
@@ -44,6 +43,9 @@ const Home = () => {
           setErrorMessage("Invalid Query");
           setLoading(false);
         }
+      })
+      .catch((error) => {
+        setErrorMessage("There is an error");
       });
   };
 
@@ -69,7 +71,6 @@ const Home = () => {
           <div className="errorMessage">{errorMessage}</div>
         ) : (
           books.map((el, index) => {
-            console.log("el", el);
             return <BookDisplay key={`${index}-${el.title}`} book={el} />;
           })
         )}
