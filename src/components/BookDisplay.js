@@ -1,8 +1,5 @@
-import React, { useState, useContext } from "react";
-import { Outlet, useOutletContext, Link } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import "../App.css";
-import $ from "jquery";
-import MyLib from "./MyLib";
 
 //takes one prop at a time (book is the same as the prop in app.js)
 const BookDisplay = ({ book }) => {

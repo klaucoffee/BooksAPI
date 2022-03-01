@@ -10,7 +10,7 @@ const MyLib = () => {
   return (
     <div className="books">
       {library.map((el, index) => {
-        return <BookDisplay key={index} book={el.book} />;
+        return <Fav key={index} book={el.book} />;
       })}
     </div>
   );
