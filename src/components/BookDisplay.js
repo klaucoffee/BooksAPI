@@ -19,13 +19,12 @@ const BookDisplay = ({ book }) => {
   return (
     <div className="book">
       <h2>{book.title}</h2>
-      <h2>
+      <p>
         {book.author_name?.length > 1
           ? `${book.author_name[0]} & ${book.author_name[1]}`
           : book.author_name}
-      </h2>
+      </p>
       <p>{publishedYear?.length > 1 ? publishedYear[0] : publishedYear}</p>
-
       <button type="button" onClick={saveBook}>
         Add to My Library!
       </button>

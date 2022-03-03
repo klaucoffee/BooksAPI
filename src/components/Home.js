@@ -53,25 +53,16 @@ const Home = () => {
       <p className="App-intro">
         The World Belongs to those who Read - Rick Holland
       </p>
-      <div className="container">
+      <div>
         <div className="books">
           {loading && !errorMessage ? (
             <div>Loading...</div>
           ) : errorMessage ? (
             <div className="errorMessage">{errorMessage}</div>
           ) : (
-            <table>
-              <tr>
-                <th>Company Name</th>
-                <th>Price</th>
-                <th>Change</th>
-              </tr>
-              <tr>
-                {books.map((el, index) => {
-                  return <BookDisplay key={`${index}-${el.title}`} book={el} />;
-                })}
-              </tr>
-            </table>
+            books.map((el, index) => {
+              return <BookDisplay key={`${index}-${el.title}`} book={el} />;
+            })
           )}
         </div>
       </div>
