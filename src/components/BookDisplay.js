@@ -1,5 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import "../App.css";
+import React, { useState } from "react";
 
 //takes one prop at a time (book is the same as the prop in app.js)
 const BookDisplay = ({ book }) => {
@@ -7,19 +8,59 @@ const BookDisplay = ({ book }) => {
   //<p>{bookISBN?.length > 1 ? bookISBN[0] : bookISBN}</p>
 
   const [library, setLibrary] = useOutletContext();
+  const [url, setUrl] = useState("");
+  const [status, setStatus] = useState("");
 
   let bookLCCN = book.lccn;
 
-  const coverLCCNurl =
-    "https://covers.openlibrary.org/b/lccn/" + bookLCCN?.[0] + "-M.jpg";
+  // const coverLCCNurl =
+  //   "https://covers.openlibrary.org/b/lccn/" + bookLCCN?.[0] + "-M.jpg";
+
+  const coverLCCNjson =
+    "https://covers.openlibrary.org/b/lccn/" + bookLCCN?.[0] + ".json";
 
   let bookISBN = book.isbn;
-  const coverISBNurl =
-    "https://covers.openlibrary.org/b/isbn/" + bookISBN?.[0] + "-M.jpg";
+  // const coverISBNurl =
+  //   "https://covers.openlibrary.org/b/isbn/" + bookISBN?.[0] + "-M.jpg";
+
+  const coverISBNjson =
+    "https://covers.openlibrary.org/b/isbn/" + bookISBN?.[0] + ".json";
 
   let bookOCLC = book.oclc;
-  const coverOCLCurl =
-    "https://covers.openlibrary.org/b/occn/" + bookOCLC?.[0] + "-M.jpg";
+  // const coverOCLCurl =
+  //   "https://covers.openlibrary.org/b/occn/" + bookOCLC?.[0] + "-M.jpg";
+
+  const coverOCLCjson =
+    "https://covers.openlibrary.org/b/oclc/" + bookOCLC?.[0] + ".json";
+
+  const fetchJSON = (urlJSON) => {
+    fetch(urlJSON)
+      .then((response) => response.json())
+      .then((jsonResponse) => {
+        setUrl(jsonResponse.source_url);
+      })
+      .catch((error) => {
+        setStatus("404");
+      });
+  };
+
+  !bookLCCN && !bookISBN && !bookOCLC
+    ? console.log("all undefined")
+    : bookLCCN
+    ? fetchJSON(coverLCCNjson)
+    : bookISBN
+    ? fetchJSON(coverISBNjson)
+    : fetchJSON(coverOCLCjson);
+
+  // const cover = () => {
+  //   return (
+  //     <img
+  //       width="200"
+  //       alt={`The Book titled: ${book.title}`}
+  //       src={coverLCCNurl}
+  //     />
+  //   );
+  // };
 
   const saveBook = () => {
     //setLibrary($(event.target).parent());
@@ -33,26 +74,10 @@ const BookDisplay = ({ book }) => {
     <div className="book">
       <h2>{book.title}</h2>
       <div>
-        {!bookLCCN && !bookISBN && !bookOCLC ? (
-          <p>all undefined</p>
-        ) : bookLCCN ? (
-          <img
-            width="200"
-            alt={`The Book titled: ${book.title}`}
-            src={coverLCCNurl}
-          />
-        ) : bookISBN ? (
-          <img
-            width="200"
-            alt={`The Book titled: ${book.title}`}
-            src={coverISBNurl}
-          />
+        {status === "404" ? (
+          <div className="placeholder">No Image Available</div>
         ) : (
-          <img
-            width="200"
-            alt={`The Book titled: ${book.title}`}
-            src={coverOCLCurl}
-          />
+          <img width="200" alt={`The Book titled: ${book.title}`} src={url} />
         )}
       </div>
       <p>

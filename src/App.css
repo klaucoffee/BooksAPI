@@ -24,11 +24,11 @@ br {
   margin: 10px 0;
   line-height: 150%;
 }
-.container {
-  width: 90%;
-  margin: auto;
-  justify-content: center;
-  text-align: center;
+.placeholder {
+  width: 200px;
+  height: 200px;
+  background-color: lightblue;
+  border: 1px, solid, black;
 }
 
 /* new css for book component */
