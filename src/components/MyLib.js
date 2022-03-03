@@ -28,7 +28,9 @@ const MyLib = () => {
       <SearchMyLib searchLib={searchLib} />
       <div className="search">
         {tempLib !== [] ? (
-          <button onClick={handleClick}>Clear filter</button>
+          <button type="button" onClick={handleClick}>
+            Clear filter
+          </button>
         ) : (
           <div></div>
         )}

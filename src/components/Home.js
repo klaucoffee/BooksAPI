@@ -14,7 +14,7 @@ const Home = () => {
     setErrorMessage(null);
     //console.log("search", movies); //TESTING
     let book_url = "https://openlibrary.org/search.json?q=" + searchValue;
-    //`https://www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`
+
     fetch(book_url)
       .then((response) => response.json())
       .then((jsonResponse) => {

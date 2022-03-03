@@ -8,6 +8,19 @@ const BookDisplay = ({ book }) => {
 
   const [library, setLibrary] = useOutletContext();
 
+  let bookLCCN = book.lccn;
+
+  const coverLCCNurl =
+    "https://covers.openlibrary.org/b/lccn/" + bookLCCN?.[0] + "-M.jpg";
+
+  let bookISBN = book.isbn;
+  const coverISBNurl =
+    "https://covers.openlibrary.org/b/isbn/" + bookISBN?.[0] + "-M.jpg";
+
+  let bookOCLC = book.oclc;
+  const coverOCLCurl =
+    "https://covers.openlibrary.org/b/occn/" + bookOCLC?.[0] + "-M.jpg";
+
   const saveBook = () => {
     //setLibrary($(event.target).parent());
     setLibrary([...library, { book }]);
@@ -19,6 +32,29 @@ const BookDisplay = ({ book }) => {
   return (
     <div className="book">
       <h2>{book.title}</h2>
+      <div>
+        {!bookLCCN && !bookISBN && !bookOCLC ? (
+          <p>all undefined</p>
+        ) : bookLCCN ? (
+          <img
+            width="200"
+            alt={`The Book titled: ${book.title}`}
+            src={coverLCCNurl}
+          />
+        ) : bookISBN ? (
+          <img
+            width="200"
+            alt={`The Book titled: ${book.title}`}
+            src={coverISBNurl}
+          />
+        ) : (
+          <img
+            width="200"
+            alt={`The Book titled: ${book.title}`}
+            src={coverOCLCurl}
+          />
+        )}
+      </div>
       <p>
         {book.author_name?.length > 1
           ? `${book.author_name[0]} & ${book.author_name[1]}`
