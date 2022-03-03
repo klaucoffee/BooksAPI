@@ -25,10 +25,12 @@ br {
   line-height: 150%;
 }
 .placeholder {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   background-color: lightblue;
   border: 1px, solid, black;
+  padding: 20px;
+  margin: auto;
 }
 
 /* new css for book component */

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import BookDisplay from "./BookDisplay";
 import { useOutletContext } from "react-router-dom";
-import Fav from "./Fav";
+
 import SearchMyLib from "./SearchMyLib";
 
 const MyLib = () => {
@@ -37,7 +37,7 @@ const MyLib = () => {
       </div>
       <div className="books">
         {library.map((el, index) => {
-          return <Fav key={index} book={el.book} />;
+          return <BookDisplay key={index} book={el.book} />;
         })}
       </div>
     </div>

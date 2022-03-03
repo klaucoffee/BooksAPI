@@ -10,6 +10,7 @@ const BookDisplay = ({ book }) => {
   const [library, setLibrary] = useOutletContext();
   const [url, setUrl] = useState("");
   const [status, setStatus] = useState("");
+  const [resultsButton, setResultsButton] = useState(false);
 
   let bookLCCN = book.lccn;
 
@@ -64,8 +65,14 @@ const BookDisplay = ({ book }) => {
 
   const saveBook = () => {
     //setLibrary($(event.target).parent());
+    setResultsButton(true);
     setLibrary([...library, { book }]);
     console.log(library);
+  };
+
+  const removeBook = () => {
+    const newList = library.filter((item) => item.book.key !== book.key);
+    setLibrary(newList);
   };
 
   const publishedYear = book.publish_year;
@@ -75,7 +82,7 @@ const BookDisplay = ({ book }) => {
       <h2>{book.title}</h2>
       <div>
         {status === "404" ? (
-          <div className="placeholder">No Image Available</div>
+          <div className="placeholder"> No Image Available</div>
         ) : (
           <img width="200" alt={`The Book titled: ${book.title}`} src={url} />
         )}
@@ -86,9 +93,17 @@ const BookDisplay = ({ book }) => {
           : book.author_name}
       </p>
       <p>{publishedYear?.length > 1 ? publishedYear[0] : publishedYear}</p>
-      <button type="button" onClick={saveBook}>
-        Add to My Library!
-      </button>
+      <div>
+        {resultsButton === false ? (
+          <button type="button" onClick={saveBook}>
+            Add to My Library!
+          </button>
+        ) : (
+          <button type="button" onClick={removeBook}>
+            Remove from Library!
+          </button>
+        )}
+      </div>
     </div>
   );
 };
