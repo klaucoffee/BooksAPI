@@ -4,21 +4,10 @@ import Header from "./Header";
 import BookDisplay from "./BookDisplay";
 import Search from "./Search";
 
-const demo_url = `https://openlibrary.org/search.json?q="2021"`;
-
 const Home = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [books, setBooks] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null); //set Message
-
-  useEffect(() => {
-    fetch(demo_url)
-      .then((response) => response.json())
-      .then((jsonResponse) => {
-        //setBooks(jsonResponse.docs);
-        setLoading(false);
-      });
-  }, []);
 
   const search = (searchValue) => {
     setLoading(true);
@@ -64,16 +53,27 @@ const Home = () => {
       <p className="App-intro">
         The World Belongs to those who Read - Rick Holland
       </p>
-      <div className="books">
-        {loading && !errorMessage ? (
-          <span>loading...</span>
-        ) : errorMessage ? (
-          <div className="errorMessage">{errorMessage}</div>
-        ) : (
-          books.map((el, index) => {
-            return <BookDisplay key={`${index}-${el.title}`} book={el} />;
-          })
-        )}
+      <div className="container">
+        <div className="books">
+          {loading && !errorMessage ? (
+            <div>Loading...</div>
+          ) : errorMessage ? (
+            <div className="errorMessage">{errorMessage}</div>
+          ) : (
+            <table>
+              <tr>
+                <th>Company Name</th>
+                <th>Price</th>
+                <th>Change</th>
+              </tr>
+              <tr>
+                {books.map((el, index) => {
+                  return <BookDisplay key={`${index}-${el.title}`} book={el} />;
+                })}
+              </tr>
+            </table>
+          )}
+        </div>
       </div>
     </div>
   );

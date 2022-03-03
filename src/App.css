@@ -15,11 +15,6 @@
   cursor: pointer;
 }
 
-.spinner {
-  height: 80px;
-  margin: auto;
-}
-
 .App-intro {
   font-size: large;
 }
@@ -28,6 +23,12 @@ br {
   display: block;
   margin: 10px 0;
   line-height: 150%;
+}
+.container {
+  width: 90%;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
 }
 
 /* new css for book component */
