@@ -1,6 +1,6 @@
+import React, { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import "../App.css";
-import React, { useState } from "react";
 import $ from "jquery";
 
 //takes one prop at a time (book is the same as the prop in app.js)
@@ -35,24 +35,25 @@ const Fav = ({ book }) => {
   const coverOCLCjson =
     "https://covers.openlibrary.org/b/oclc/" + bookOCLC?.[0] + ".json";
 
-  const fetchJSON = (urlJSON) => {
-    fetch(urlJSON)
-      .then((response) => response.json())
-      .then((jsonResponse) => {
-        setUrl(jsonResponse.source_url);
-      })
-      .catch((error) => {
-        setStatus("404");
-      });
-  };
-
-  bookLCCN
-    ? fetchJSON(coverLCCNjson)
-    : bookISBN
-    ? fetchJSON(coverISBNjson)
-    : bookOCLC
-    ? fetchJSON(coverOCLCjson)
-    : fetchJSON("https://covers.openlibrary.org/b/oclc/undefined.json");
+  useEffect(() => {
+    const fetchJSON = (urlJSON) => {
+      fetch(urlJSON)
+        .then((response) => response.json())
+        .then((jsonResponse) => {
+          setUrl(jsonResponse.source_url);
+        })
+        .catch((error) => {
+          setStatus("404");
+        });
+    };
+    bookLCCN
+      ? fetchJSON(coverLCCNjson)
+      : bookISBN
+      ? fetchJSON(coverISBNjson)
+      : bookOCLC
+      ? fetchJSON(coverOCLCjson)
+      : fetchJSON("https://covers.openlibrary.org/b/oclc/undefined.json");
+  }, []);
 
   // const cover = () => {
   //   return (
