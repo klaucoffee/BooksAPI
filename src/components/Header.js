@@ -12,7 +12,7 @@ const Header = (props) => {
   return (
     <div>
       <header className="App-header">
-        <h2>Create your personal library</h2>
+        <h2>Create Your Personal Library</h2>
       </header>
       <div className="nav">
         <div className="nav-item">

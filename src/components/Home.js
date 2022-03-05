@@ -3,6 +3,8 @@ import "../App.css";
 import Header from "./Header";
 import BookDisplay from "./BookDisplay";
 import Search from "./Search";
+import { textAlign } from "@mui/system";
+import LinearDeterminate from "./LinearDeterminate";
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -18,7 +20,7 @@ const Home = () => {
     fetch(book_url)
       .then((response) => response.json())
       .then((jsonResponse) => {
-        if (jsonResponse.numFound > 500) {
+        if (jsonResponse.numFound > 1000) {
           //too many responses
           setErrorMessage(
             "Too many responses - please narrow down search terms"
@@ -61,19 +63,21 @@ const Home = () => {
     <div className="App">
       <Search search={search} />
       <p className="App-intro">
-        The World Belongs to those who Read - Rick Holland
+        "The world belongs to those who read" - Rick Holland
       </p>
       <div>
         <div>
           <div className="books">
             {loading && !errorMessage ? (
-              <div>Loading...</div>
+              <LinearDeterminate />
             ) : errorMessage ? (
               <div className="errorMessage">{errorMessage}</div>
             ) : (
-              books.map((el, index) => {
-                return <BookDisplay key={`${index}-${el.title}`} book={el} />;
-              })
+              <div className="books" style={{ marginTop: 50 }}>
+                {books.map((el, index) => {
+                  return <BookDisplay key={`${index}-${el.title}`} book={el} />;
+                })}
+              </div>
             )}
           </div>
         </div>
