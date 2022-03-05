@@ -40,25 +40,6 @@ const Home = () => {
       });
   };
 
-  // let titles = [];
-
-  // console.log(books);
-  // console.log(books.length);
-  // const getTitles = () => {
-  //   for (let i = 0; i < books.length; i++) {
-  //     titles.push(books[i].title.toLowerCase());
-  //   }
-  // };
-
-  // getTitles();
-
-  // console.log(titles);
-
-  // const result = titles.filter((i) => i !== titles);
-  // console.log(result);
-
-  //multiple ternery operators
-  //   <Header text="Curate Your Library" onClick={refreshPage} />
   return (
     <div className="App">
       <h2 style={{ padding: 10, textAlign: "center" }}>Search for books</h2>

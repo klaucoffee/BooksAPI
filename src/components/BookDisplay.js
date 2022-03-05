@@ -5,9 +5,6 @@ import Button from "@mui/material/Button";
 
 //takes one prop at a time (book is the same as the prop in app.js)
 const BookDisplay = ({ book }) => {
-  //const [isbn, setIsbn] = useState([]);
-  //<p>{bookISBN?.length > 1 ? bookISBN[0] : bookISBN}</p>
-
   const [library, setLibrary] = useOutletContext();
   const [url, setUrl] = useState("");
   const [status, setStatus] = useState("");
@@ -59,15 +56,11 @@ const BookDisplay = ({ book }) => {
     //setLibrary($(event.target).parent());
     setResultsButton(true);
     setLibrary([...library, { book }]);
-    localStorage.setItem("key", library);
-
-    console.log(library);
   };
 
   const removeBook = () => {
     const newList = library.filter((item) => item.book.key !== book.key);
     setLibrary(newList);
-    localStorage.removeItem("book", library);
   };
 
   const publishedYear = book.publish_year;
