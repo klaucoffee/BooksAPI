@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import BookDisplay from "./BookDisplay";
 import { useOutletContext } from "react-router-dom";
 import Fav from "./Fav";
+import Button from "@mui/material/Button";
 
 import SearchMyLib from "./SearchMyLib";
 
 const MyLib = () => {
   const [library, setLibrary] = useOutletContext();
-  const [tempLib, setTempLib] = useState([]);
+  const [tempLib, setTempLib] = useState("");
 
   const searchLib = (searchLibValue) => {
     if (searchLibValue !== "") {
@@ -22,16 +23,20 @@ const MyLib = () => {
 
   const handleClick = () => {
     setLibrary(tempLib);
+    setTempLib("");
   };
 
   return (
     <div>
       <SearchMyLib searchLib={searchLib} />
       <div className="search">
-        <button type="button" onClick={handleClick}>
-          Clear filter
-        </button>
+        {tempLib !== "" ? (
+          <Button onClick={handleClick}>Clear filter</Button>
+        ) : (
+          <div></div>
+        )}
       </div>
+
       <div className="books">
         {library.map((el, index) => {
           return <Fav key={index} book={el.book} />;

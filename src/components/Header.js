@@ -12,15 +12,13 @@ const Header = (props) => {
   return (
     <div>
       <header className="App-header">
-        <h2>Curate Your Library</h2>
+        <h2>For Bookworms</h2>
       </header>
       <div className="nav">
         <div className="nav-item">
-          <span className="nav-logo">
-            <div onClick={refreshPage}>
-              <Link to="/booksapi">Home</Link>
-            </div>
-          </span>
+          <div onClick={refreshPage}>
+            <Link to="/booksapi">Home</Link>
+          </div>
         </div>
         <div className="nav-item">
           <Link to="/booksapi/my-library">My Library</Link>

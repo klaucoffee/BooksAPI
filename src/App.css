@@ -67,7 +67,8 @@ br {
   padding: 5px 25px 10px 25px;
   max-width: 25%;
 }
-new css for book component */ .errorMessage {
+
+.errorMessage {
   margin: auto;
   font-weight: bold;
   color: rgb(161, 15, 15);
@@ -79,6 +80,7 @@ new css for book component */ .errorMessage {
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 input[type="submit"] {
@@ -99,6 +101,28 @@ input[type="submit"]:hover {
 .search > input[type="text"] {
   width: 40%;
   min-width: 170px;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 50px;
+  padding: 0 20px;
+  background: rgb(220, 151, 151);
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.nav > * {
+  padding-right: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
 }
 
 @media screen and (min-width: 694px) and (max-width: 915px) {
