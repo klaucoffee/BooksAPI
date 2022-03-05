@@ -18,7 +18,7 @@ const About = () => {
         Open Library API Source
       </a>
       <br></br>
-      <a href="krystlelau90@gmail.com">Contact</a>
+      <p>Contact me at krystlelau90@gmail.com</p>
     </div>
   );
 };

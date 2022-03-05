@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import $ from "jquery";
 
 //takes one prop at a time (book is the same as the prop in app.js)
-const BookDisplay = ({ book }) => {
+const Fav = ({ book }) => {
   //const [isbn, setIsbn] = useState([]);
   //<p>{bookISBN?.length > 1 ? bookISBN[0] : bookISBN}</p>
 
@@ -64,13 +64,6 @@ const BookDisplay = ({ book }) => {
   //   );
   // };
 
-  const saveBook = () => {
-    //setLibrary($(event.target).parent());
-    setResultsButton(true);
-    setLibrary([...library, { book }]);
-    console.log(library);
-  };
-
   const removeBook = () => {
     const newList = library.filter((item) => item.book.key !== book.key);
     setLibrary(newList);
@@ -95,18 +88,12 @@ const BookDisplay = ({ book }) => {
       </p>
       <p>{publishedYear?.length > 1 ? publishedYear[0] : publishedYear}</p>
       <div>
-        {resultsButton === false ? (
-          <button type="button" onClick={saveBook}>
-            Add to My Library!
-          </button>
-        ) : (
-          <button type="button" onClick={removeBook}>
-            Remove from Library!
-          </button>
-        )}
+        <button type="button" onClick={removeBook}>
+          Remove from Library!
+        </button>
       </div>
     </div>
   );
 };
 
-export default BookDisplay;
+export default Fav;

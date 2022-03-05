@@ -29,6 +29,7 @@ br {
   height: 150px;
   background-color: lightblue;
   border: 1px, solid, black;
+  border-style: inset;
   padding: 20px;
   margin: auto;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BookDisplay from "./BookDisplay";
 import { useOutletContext } from "react-router-dom";
+import Fav from "./Fav";
 
 import SearchMyLib from "./SearchMyLib";
 
@@ -27,17 +28,13 @@ const MyLib = () => {
     <div>
       <SearchMyLib searchLib={searchLib} />
       <div className="search">
-        {tempLib !== [] ? (
-          <button type="button" onClick={handleClick}>
-            Clear filter
-          </button>
-        ) : (
-          <div></div>
-        )}
+        <button type="button" onClick={handleClick}>
+          Clear filter
+        </button>
       </div>
       <div className="books">
         {library.map((el, index) => {
-          return <BookDisplay key={index} book={el.book} />;
+          return <Fav key={index} book={el.book} />;
         })}
       </div>
     </div>
