@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import "../App.css";
-import $ from "jquery";
+import Button from "@mui/material/Button";
 
 //takes one prop at a time (book is the same as the prop in app.js)
 const BookDisplay = ({ book }) => {
@@ -79,7 +79,12 @@ const BookDisplay = ({ book }) => {
         {status === "404" ? (
           <div className="placeholder">No Image Available</div>
         ) : (
-          <img width="200" alt={`The Book titled: ${book.title}`} src={url} />
+          <img
+            className="img"
+            width="200"
+            alt={`The Book titled: ${book.title}`}
+            src={url}
+          />
         )}
       </div>
       <p>
@@ -90,13 +95,13 @@ const BookDisplay = ({ book }) => {
       <p>{publishedYear?.length > 1 ? publishedYear[0] : publishedYear}</p>
       <div>
         {resultsButton === false ? (
-          <button type="button" onClick={saveBook}>
+          <Button variant="outlined" onClick={saveBook}>
             Add to My Library!
-          </button>
+          </Button>
         ) : (
-          <button type="button" onClick={removeBook}>
+          <Button variant="contained" onClick={removeBook}>
             Remove from Library!
-          </button>
+          </Button>
         )}
       </div>
     </div>

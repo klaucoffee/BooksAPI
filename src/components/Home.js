@@ -64,16 +64,18 @@ const Home = () => {
         The World Belongs to those who Read - Rick Holland
       </p>
       <div>
-        <div className="books">
-          {loading && !errorMessage ? (
-            <div>Loading...</div>
-          ) : errorMessage ? (
-            <div className="errorMessage">{errorMessage}</div>
-          ) : (
-            books.map((el, index) => {
-              return <BookDisplay key={`${index}-${el.title}`} book={el} />;
-            })
-          )}
+        <div>
+          <div className="books">
+            {loading && !errorMessage ? (
+              <div>Loading...</div>
+            ) : errorMessage ? (
+              <div className="errorMessage">{errorMessage}</div>
+            ) : (
+              books.map((el, index) => {
+                return <BookDisplay key={`${index}-${el.title}`} book={el} />;
+              })
+            )}
+          </div>
         </div>
       </div>
     </div>

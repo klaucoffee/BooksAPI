@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import "../App.css";
-import $ from "jquery";
+import Button from "@mui/material/Button";
 
 //takes one prop at a time (book is the same as the prop in app.js)
 const Fav = ({ book }) => {
@@ -53,7 +53,7 @@ const Fav = ({ book }) => {
       : bookOCLC
       ? fetchJSON(coverOCLCjson)
       : fetchJSON("https://covers.openlibrary.org/b/oclc/undefined.json");
-  }, []);
+  });
 
   // const cover = () => {
   //   return (
@@ -89,9 +89,9 @@ const Fav = ({ book }) => {
       </p>
       <p>{publishedYear?.length > 1 ? publishedYear[0] : publishedYear}</p>
       <div>
-        <button type="button" onClick={removeBook}>
+        <Button variant="contained" onClick={removeBook}>
           Remove from Library!
-        </button>
+        </Button>
       </div>
     </div>
   );
