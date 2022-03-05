@@ -27,7 +27,7 @@ const About = () => {
         </Button>
         <br></br>
         <Button href="mailto:krystlelau90@gmail.com?subject=Feedback%20about%20Bookworm%20web%20app">
-          Contact me at krystlelau90@gmail.com
+          Contact
         </Button>
       </ButtonGroup>
     </div>
