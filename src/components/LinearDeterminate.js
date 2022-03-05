@@ -26,7 +26,12 @@ export default function LinearDeterminate() {
       <LinearProgress
         variant="determinate"
         value={progress}
-        style={{ marginTop: 100 }}
+        style={{
+          marginTop: 100,
+          width: 700,
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
       />
     </Box>
   );
