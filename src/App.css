@@ -12,7 +12,6 @@
   font-size: calc(10px + 2vmin);
   color: white;
   padding: 20px;
-  cursor: pointer;
 }
 
 .App-intro {
@@ -117,12 +116,14 @@ input[type="submit"]:hover {
   justify-content: center;
   width: 100vw;
   height: 50px;
-  padding: 0 20px;
   background: rgb(220, 151, 151);
   font-weight: bold;
   font-size: 1.5em;
 }
 
+.nav-item:hover {
+  text-decoration: underline;
+}
 .nav > * {
   padding-right: 20px;
 }

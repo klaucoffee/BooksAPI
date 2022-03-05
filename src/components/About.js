@@ -8,10 +8,11 @@ const About = () => {
     fontSize: 20,
     color: "#A9A9A9",
     textAlign: "center",
-    padding: "100px",
+    padding: "20px 180px",
   };
   return (
     <div>
+      <h2 style={{ padding: 10, textAlign: "center" }}>About</h2>
       <p style={styleObj}>
         This webapp is for any self-confessed bookworms who need to keep track
         of their personal libraries and who need to stop buying duplicates of

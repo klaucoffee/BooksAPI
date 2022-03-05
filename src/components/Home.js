@@ -61,6 +61,7 @@ const Home = () => {
   //   <Header text="Curate Your Library" onClick={refreshPage} />
   return (
     <div className="App">
+      <h2 style={{ padding: 10, textAlign: "center" }}>Search for books</h2>
       <Search search={search} />
       <p className="App-intro">
         "The world belongs to those who read" - Rick Holland

@@ -28,6 +28,7 @@ const MyLib = () => {
 
   return (
     <div>
+      <h2 style={{ padding: 10, textAlign: "left" }}>My Books</h2>
       <SearchMyLib searchLib={searchLib} />
       <div className="search">
         {tempLib !== "" ? (
