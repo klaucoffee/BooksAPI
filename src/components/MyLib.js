@@ -14,7 +14,10 @@ const MyLib = () => {
     if (searchLibValue !== "") {
       setTempLib(library);
       const filterList = library.filter((i) => {
-        return i.book.title.toLowerCase() === searchLibValue.toLowerCase();
+        //.includes
+        return i.book.title
+          .toLowerCase()
+          .includes(searchLibValue.toLowerCase()); //what is i want to search by word instead of whole titles
       });
 
       setLibrary(filterList);
