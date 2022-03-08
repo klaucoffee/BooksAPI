@@ -24,9 +24,11 @@ I hope that this booksapi app can be useful for anyone else in a similar situati
 ![Screenshot 2022-03-08 at 8 43 35 PM](https://user-images.githubusercontent.com/31529132/157240531-e43ad87b-dcbe-4f37-bba8-87acdfb9ddee.png)
 
 - Users can also choose to remove books from their library
-![Screenshot 2022-03-08 at 8 43 35 PM](https://user-images.githubusercontent.com/31529132/157240751-81f153eb-d7a5-4504-90ff-b623c51b6bc6.png)
+![Screenshot 2022-03-08 at 8 44 44 PM](https://user-images.githubusercontent.com/31529132/157243506-0956f676-36c8-414d-b7f9-ba0179ecca30.png)
 
-- Finally, in the About page, users will find the link to the github repo, the link to Open Library (source of the API), and a way to contact me
+
+- Finally, in the About page, users will find the link to the github repo, the link to Open Library (source of the API), and a way to contact me.
+
 ![image](https://user-images.githubusercontent.com/31529132/157241181-b7b08a32-39d1-4ac4-8852-2f3400989ca1.png)
 
 
@@ -34,7 +36,9 @@ I hope that this booksapi app can be useful for anyone else in a similar situati
 
 ### APIs
 - This BooksAPI app fetches from the open source API from Open Library (https://openlibrary.org/developers/api). 
+
 - In particular, the Search API (https://openlibrary.org/dev/docs/api/search) was used to do the main search in the Home page.
+
 - The book covers are fetched using the open library book cover API (https://openlibrary.org/dev/docs/api/covers)
 
 ### React Hooks
