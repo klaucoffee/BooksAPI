@@ -53,7 +53,7 @@ br {
   margin: 0;
 }
 
-.add-books {
+/*.add-books {
   text-align: center;
 }
 
@@ -61,10 +61,10 @@ br {
   font-size: 16px;
   padding: 8px;
   margin: 0 10px 30px 10px;
-}
+}*/
 
 .book {
-  padding: 5px 25px 10px 25px;
+  padding: 5px 25px 30px 25px;
   max-width: 25%;
 }
 

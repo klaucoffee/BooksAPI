@@ -67,7 +67,7 @@ const BookDisplay = ({ book }) => {
 
   return (
     <div className="book">
-      <h2>{book.title}</h2>
+      <h2 style={{ paddingBottom: 10 }}>{book.title}</h2>
       <div>
         {status === "404" ? (
           <div className="placeholder">No Image Available</div>
@@ -80,19 +80,21 @@ const BookDisplay = ({ book }) => {
           />
         )}
       </div>
-      <p>
+      <p style={{ padding: 5 }}>
         {book.author_name?.length > 1
           ? `${book.author_name[0]} & ${book.author_name[1]}`
           : book.author_name}
       </p>
-      <p>{publishedYear?.length > 1 ? publishedYear[0] : publishedYear}</p>
+      <p style={{ paddingBottom: 10 }}>
+        {publishedYear?.length > 1 ? publishedYear[0] : publishedYear}
+      </p>
       <div>
         {resultsButton === false ? (
           <Button variant="outlined" onClick={saveBook}>
             Add to My Library!
           </Button>
         ) : (
-          <Button variant="contained" onClick={removeBook}>
+          <Button className="button" variant="contained" onClick={removeBook}>
             Remove from Library!
           </Button>
         )}
